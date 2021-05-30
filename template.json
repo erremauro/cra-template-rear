@@ -1,0 +1,40 @@
+{
+  "package": {
+    "dependencies": {
+      "@testing-library/jest-dom": "^5.11.4",
+      "@testing-library/react": "^11.1.0",
+      "@testing-library/user-event": "^12.1.10",
+      "connected-react-router": "^6.9.1",
+      "history": "^5.0.0",
+      "humps": "^2.0.1",
+      "prop-types": "^15.7.2",
+      "react-redux": "^7.2.4",
+      "react-router": "^5.2.0",
+      "react-router-dom": "^5.2.0",
+      "react-scripts": "4.0.3",
+      "redux": "^4.1.0",
+      "redux-thunk": "^2.3.0",
+      "thunk": "^0.0.1",
+      "web-vitals": "^1.0.1",
+      "whatwg-fetch": "^3.6.2"
+    },
+    "devDependencies": {
+      "fs-extra": "^10.0.0",
+      "prettier": "^2.3.0",
+      "rear-logger": "^1.0.0",
+      "redux-devtools-extension": "^2.13.9"
+    },
+    "scripts": {
+      "setup": "rm -rf node_modules/@ && ln -s `pwd`/src node_modules/@",
+      "create-action": "./scripts/create-action.js",
+      "create-component": "./scripts/create-component.js",
+      "create-container": "./scripts/create-container.js"
+    },
+    "eslintConfig": {
+      "extends": [
+        "react-app",
+        "react-app/jest"
+      ]
+    }
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "name": "cra-template-rear",
+  "descriptions": "React template bundled with react-redux and react-router",
+  "version": "1.0.0",
+  "author": "Roberto Mauro <erremauro@icloud.com>",
+  "engines": {
+    "node": ">= 12.0.0"
+  },
+  "main": "template.json",
+  "repository": "https://github.com/erremauro/cra-template-rear.git",
+  "license": "ISC",
+  "keywords": [
+    "react",
+    "create-react-app",
+    "cra-template",
+    "template",
+    "enzyme",
+    "eslint",
+    "redux",
+    "react-redux",
+    "react-router",
+    "react-router-dom",
+    "typescript",
+    "prettier"
+  ],
+  "files": [
+    "template",
+    "template.json"
+  ],
+  "dependencies": {
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.10",
+    "connected-react-router": "^6.9.1",
+    "history": "^5.0.0",
+    "humps": "^2.0.1",
+    "prop-types": "^15.7.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-redux": "^7.2.4",
+    "react-router": "^5.2.0",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "4.0.3",
+    "redux": "^4.1.0",
+    "redux-thunk": "^2.3.0",
+    "thunk": "^0.0.1",
+    "web-vitals": "^1.0.1",
+    "whatwg-fetch": "^3.6.2"
+  },
+  "scripts": {
+    "preinstall": "rm -rf node_modules/@",
+    "postinstall": "ln -s `pwd`/src node_modules/@",
+    "clean-files": "rm -rf ./template/public ./template/src ./template/scripts ./template/.editorconfig ./template/README.md",
+    "copy-files": "cp -a ./src/. template/src && cp -a ./public/. template/public && cp -a ./scripts template/scripts && cp ./.editorconfig template/.editorconfig && cp ./README.md template/README.md",
+    "prepublishOnly": "yarn clean-files && yarn copy-files",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "create-action": "./scripts/create-action.js",
+    "create-container": "./scripts/create-container.js",
+    "create-component": "./scripts/create-component.js"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "fs-extra": "^10.0.0",
+    "prettier": "^2.3.0",
+    "rear-logger": "^1.0.0",
+    "redux-devtools-extension": "^2.13.9"
+  }
+}
