@@ -1,7 +1,7 @@
 {
   "name": "cra-template-rear",
-  "descriptions": "React template bundled with react-redux and react-router",
-  "version": "1.0.0",
+  "description": "React template bundled with react-redux and react-router",
+  "version": "1.1.0",
   "author": "Roberto Mauro <erremauro@icloud.com>",
   "engines": {
     "node": ">= 12.0.0"
@@ -48,8 +48,9 @@
     "whatwg-fetch": "^3.6.2"
   },
   "scripts": {
-    "preinstall": "rm -rf node_modules/@",
-    "postinstall": "ln -s `pwd`/src node_modules/@",
+    "preinstall": "node ./scripts/setup/pre-install.js",
+    "postinstall": "node ./scripts/setup/post-install.js",
+    "setup": "node ./scripts/setup/setup.js",
     "clean-files": "rm -rf ./template/public ./template/src ./template/scripts ./template/.editorconfig ./template/README.md",
     "copy-files": "cp -a ./src/. template/src && cp -a ./public/. template/public && cp -a ./scripts template/scripts && cp ./.editorconfig template/.editorconfig && cp ./README.md template/README.md",
     "prepublishOnly": "yarn clean-files && yarn copy-files",
