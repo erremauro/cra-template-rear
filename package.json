@@ -1,6 +1,6 @@
 {
   "name": "cra-template-rear",
-  "descriptions": "React template bundled with react-redux and react-router",
+  "description": "React template bundled with react-redux and react-router",
   "version": "1.0.0",
   "author": "Roberto Mauro <erremauro@icloud.com>",
   "engines": {
