@@ -35,7 +35,7 @@ After the installation process has completed, go into your newly created app
 directory and run the setup script.
 
     cd <your_app>
-    yarn start setup
+    yarn setup
 
 ### Create Rear App
 

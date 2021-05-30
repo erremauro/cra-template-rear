@@ -7,8 +7,20 @@ This change log adheres to standards from [Keep a CHANGELOG].
 [Semantic Versioning]: http://semver.org/
 [Keep a CHANGELOG]: http://keepachangelog.com
 
+## [1.1.0] 2021-05-31
+
+#### :rocket: Enhancement
+* Add `setup` scripts for creating the `@` shortcut to `src` in `node_modules`
+for importing modules without using relative paths.
+
+#### :house: Internal
+* Update `preinstall` and `postinstall` scripts in `package.json`
+* Rename `descriptions` to `description` in `package.json`
+
 ## [1.0.0] 2021-05-30
 
 :rocket: Woohoo! The First release!
 
+[1.1.0]: https://github.com/erremauro/cra-template-rear/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/erremauro/cra-template-rear/releases/tag/v1.0.0
+

@@ -25,7 +25,7 @@
       "redux-devtools-extension": "^2.13.9"
     },
     "scripts": {
-      "setup": "rm -rf node_modules/@ && ln -s `pwd`/src node_modules/@",
+      "setup": "node ./scripts/setup/setup.js",
       "create-action": "./scripts/create-action.js",
       "create-component": "./scripts/create-component.js",
       "create-container": "./scripts/create-container.js"
