@@ -56,31 +56,30 @@ function configureStyles() {
               const newName = file.replace(styleExtPattern, newStyleExt);
               fs.rename(file, newName, (err) => {
                 if (err) return reject(err);
+                return resolve();
               });
-            } else {
-              resolve();
             }
-
-            // Replace stylesheet references inside files
-            if (extname === ".js") {
+            else if (extname === ".js") {
               fs.readFile(file, "utf-8", (err, data) => {                
                 const matches = data.match(jsStylePattern);
                 let replacements = [];
-                if (matches !== null) {
-                  replacements = matches.map((m) =>
-                    m.replace(oldStyleExt, newStyleExt)
-                  );
+                if (matches === null) return resolve()
 
-                  matches.forEach((m, i) => {
-                    data = data.replace(m, replacements[i]);
-                  });
+                replacements = matches.map((m) =>
+                  m.replace(oldStyleExt, newStyleExt)
+                );
 
-                  fs.writeFile(file, data, () => {
-                    if (err) return reject(err);
-                    resolve();
-                  });
-                }
+                matches.forEach((m, i) => {
+                  data = data.replace(m, replacements[i]);
+                });
+
+                fs.writeFile(file, data, () => {
+                  if (err) return reject(err);
+                  resolve();
+                });
               });
+            } else {
+              return resolve();
             }
           })
       );
