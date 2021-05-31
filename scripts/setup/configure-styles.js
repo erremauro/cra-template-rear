@@ -21,22 +21,25 @@ function configureStyles() {
     const isSass = styleExt === "scss";
     const hasSass = pkg.dependencies["sass"];
 
+    const sassCwd = path.resolve(path.join(__dirname, "..", ".."));
+    const walkDir = path.resolve(path.join(sassCwd, "src"));
+
     if (isSass && !hasSass) {
       spawnSync(
         "yarn",
-        ["add", "sass", "--cwd", path.resolve(__dirname + "../../")],
+        ["add", "sass", "--cwd", sassCwd],
         { stdio: "inherit" }
       );
     } else if (!isSass && hasSass) {
       spawnSync(
         "yarn",
-        ["remove", "sass", "--cwd", path.resolve(__dirname + "../../")],
+        ["remove", "sass", "--cwd", sassCwd],
         { stdio: "inherit" }
       );
     }
 
-    walk(path.resolve(__dirname + "/../../src"), (err, results) => {
-      if (err) throw err;
+    walk(walkDir, (err, results) => {
+      if (err) return reject(err);
 
       const styleExtPattern = isSass ? /\.css$/i : /\.scss$/i;
       const jsStylePattern = isSass ? /\w+(\.css)/g : /\w+(\.scss)/g;
@@ -60,7 +63,7 @@ function configureStyles() {
 
             // Replace stylesheet references inside files
             if (extname === ".js") {
-              fs.readFile(file, "utf-8", (err, data) => {
+              fs.readFile(file, "utf-8", (err, data) => {                
                 const matches = data.match(jsStylePattern);
                 let replacements = [];
                 if (matches !== null) {
@@ -82,7 +85,7 @@ function configureStyles() {
           })
       );
 
-      return Promise.all(promises);
+      return Promise.all(promises).then(() => resolve());
     });
   });
 }
