@@ -7,6 +7,15 @@ This change log adheres to standards from [Keep a CHANGELOG].
 [Semantic Versioning]: http://semver.org/
 [Keep a CHANGELOG]: http://keepachangelog.com
 
+## [1.2.0] 2021-05-31
+
+#### :rocket: Enhancement
+* Add `--light` command option to `create-component` to create components with
+no inner implementation.
+* Add `--light` command option to `create-container` to create containers with
+no action providers.
+* Add support for configuring Sass or CSS stylesheet format.
+
 ## [1.1.0] 2021-05-31
 
 #### :rocket: Enhancement
@@ -21,6 +30,7 @@ for importing modules without using relative paths.
 
 :rocket: Woohoo! The First release!
 
+[1.2.0]: https://github.com/erremauro/cra-template-rear/compare/v1.1.0...v1.2.0
 [1.1.0]: https://github.com/erremauro/cra-template-rear/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/erremauro/cra-template-rear/releases/tag/v1.0.0
 

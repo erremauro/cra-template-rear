@@ -16,6 +16,8 @@ function preInstall() {
   try {
     fs.unlinkSync(targetPath);  
   } catch (err) {
-    // no output
+    if (err.code !== "ENOENT") {
+      throw err;
+    }
   }
 }

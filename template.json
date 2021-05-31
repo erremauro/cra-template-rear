@@ -35,6 +35,9 @@
         "react-app",
         "react-app/jest"
       ]
+    },
+    "rearConfig": {
+      "sass": false
     }
   }
 }
