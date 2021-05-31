@@ -7,6 +7,15 @@ This change log adheres to standards from [Keep a CHANGELOG].
 [Semantic Versioning]: http://semver.org/
 [Keep a CHANGELOG]: http://keepachangelog.com
 
+## [Unreleased]
+
+#### :rocket: Enhancement
+* Add `--light` command option to `create-component` to create components with
+no inner implementation.
+* Add `--light` command option to `create-container` to create containers with
+no action providers.
+* Add support for configuring Sass or CSS stylesheet format.
+
 ## [1.1.0] 2021-05-31
 
 #### :rocket: Enhancement

@@ -21,6 +21,7 @@ Opinionated [create-react-app](https://github.com/facebookincubator/create-react
   - [Creating a new component](#creating-a-new-component)
   - [Creating a new container](#creating-a-new-container)
   - [Creating actions](#creating-actions)
+- [Using SASS](#using-sass)
 - [API Middleware](#api-middleware)
 
 ## Installation
@@ -122,6 +123,27 @@ Create a new set of actions and a reducer in `./src/actions` and `./reducers`
 
 Once the reducer has been created it must be manually added to 
 `./src/reducers/index.js` reducers list.
+
+## Using SASS
+
+You can configure your project for using [Sass](https://sass-lang.com) or CSS
+stylesheet format in `package.json`'s `rearConfig` section by changing the
+`sass` property.
+
+```json
+{
+  "rearConfig": {
+    "sass": true
+  }
+}
+```
+
+You can then run `yarn setup` to reconfigure your project. 
+
+**Note**: During the configuration process the stylesheets are just renamed. No
+changes to the content is made. Bear in mind that if you choose to downgrade
+to CSS from Sass, you'll need to update the content that uses Sass specifc
+syntax. 
 
 ## API Middleware
 

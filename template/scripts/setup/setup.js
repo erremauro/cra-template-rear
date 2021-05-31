@@ -1,6 +1,7 @@
 #!/usr/bin/env node
-const preInstall = require('./pre-install')
-const postInstall = require('./post-install')
+const preInstall = require("./pre-install");
+const postInstall = require("./post-install");
+const configureStyles = require("./configure-styles");
 
 if (require.main === module) {
   setup();
@@ -13,4 +14,5 @@ if (require.main === module) {
 function setup() {
   preInstall();
   postInstall();
+  configureStyles();
 }
