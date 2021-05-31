@@ -56,13 +56,10 @@ function configureStyles() {
               const newName = file.replace(styleExtPattern, newStyleExt);
               fs.rename(file, newName, (err) => {
                 if (err) return reject(err);
+                return resolve();
               });
-            } else {
-              resolve();
             }
-
-            // Replace stylesheet references inside files
-            if (extname === ".js") {
+            else if (extname === ".js") {
               fs.readFile(file, "utf-8", (err, data) => {                
                 const matches = data.match(jsStylePattern);
                 let replacements = [];
@@ -81,9 +78,7 @@ function configureStyles() {
                   resolve();
                 });
               });
-            }
-
-            if (extname !== '.js' && extname !== oldStyleExt) {
+            } else {
               return resolve();
             }
           })
