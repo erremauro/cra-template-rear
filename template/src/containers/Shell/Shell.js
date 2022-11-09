@@ -1,12 +1,12 @@
-import React, {Component} from 'react';
+import { Routes, Route } from 'react-router-dom';
+import Home from '@/containers/Home';
 
-class Shell extends Component {
-  render() {
-    return(
-      <div className="Shell">
-      </div>
-    )
-  }
+function Shell() {
+  return(
+    <Routes>
+      <Route path='/' element={<Home />} />
+    </Routes>
+  )
 }
 
 export default Shell;

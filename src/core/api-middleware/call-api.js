@@ -1,17 +1,17 @@
-import { apiURL } from '@/core/site-url';
-import addParams from './add-params';
-import 'whatwg-fetch';
+import { apiURL } from "@/core/urls";
+import addParams from "./add-params";
+import "whatwg-fetch";
 
 function isURL(url) {
-  return url.indexOf('http://') !== -1 || url.indexOf('https://') !== -1;
+  return url.indexOf("http://") !== -1 || url.indexOf("https://") !== -1;
 }
 
 const CallApi = (
   endpoint,
-  method = 'GET',
+  method = "GET",
   params = {},
   payload,
-  dataType = 'JSON'
+  dataType = "JSON"
 ) => {
   const url = isURL(endpoint) ? endpoint : `${apiURL}/${endpoint}`;
 
@@ -24,50 +24,49 @@ const CallApi = (
 
   const options = {
     method,
-    credentials: 'include',
+    credentials: "include",
     headers: {
-      'Cache-Control': 'no-cache, no-store, must-revalidate',
+      "Cache-Control": "no-cache, no-store, must-revalidate",
     },
-  }
+  };
 
   // append the payload to the request body and change
   // the request method accordingly if necessary
   if (payload) {
-    if (options.method === 'GET') options.method = 'POST';
+    if (options.method === "GET") options.method = "POST";
     if (payload instanceof FormData) {
-      options.body = payload
+      options.body = payload;
     } else {
-      options.body = JSON.stringify(payload)
-      options.headers['Content-Type'] = 'application/json';
+      options.body = JSON.stringify(payload);
+      options.headers["Content-Type"] = "application/json";
     }
   }
 
-  return fetch(fullURL, options).then(response => {
-    if (response.status >= 200 && response.status < 300) {
-      return response;
-    }
+  return fetch(fullURL, options)
+    .then((response) => {
+      if (response.status >= 200 && response.status < 300) {
+        return response;
+      }
 
-    // Handle response error.
-    // Customize this part to suite your needs.
-    return response.json()
-      .then(json => {
-        const error = new Error(response.statusText);
-        error.response = response;
-        throw error;
-      })
-      .catch(error => {
-        throw new Error(response.statusText);
-      });
-  })
-  .then(response => {
-    return response.json().then(json => ({json, response}))
-  })
-  .then(({json, response}) => {
-    return response.ok 
-      ? Object.assign({}, json)
-      : Promise.reject(json);
-  })
-}
+      // Handle response error.
+      // Customize this part to suite your needs.
+      return response
+        .json()
+        .then((json) => {
+          const error = new Error(response.statusText);
+          error.response = response;
+          throw error;
+        })
+        .catch((error) => {
+          throw new Error(response.statusText);
+        });
+    })
+    .then((response) => {
+      return response.json().then((json) => ({ json, response }));
+    })
+    .then(({ json, response }) => {
+      return response.ok ? Object.assign({}, json) : Promise.reject(json);
+    });
+};
 
-
-export default CallApi
+export default CallApi;

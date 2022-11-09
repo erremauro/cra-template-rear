@@ -2,11 +2,19 @@
  * @preserve jquery-param (c) 2015 KNOWLEDGECODE | MIT
  */
 const Param = (a) => {
-  const s = [], rbracket = /\[\]$/;
+  const s = [],
+    rbracket = /\[\]$/;
   const add = (k, v) => {
-    v = typeof v === 'function' ? v() : v === null ? '' : v === undefined ? '' : v;
-    s[s.length] = encodeURIComponent(k) + '=' + encodeURIComponent(v);
-  }
+    v =
+      typeof v === "function"
+        ? v()
+        : v === null
+        ? ""
+        : v === undefined
+        ? ""
+        : v;
+    s[s.length] = encodeURIComponent(k) + "=" + encodeURIComponent(v);
+  };
   const buildParams = (prefix, obj) => {
     let i, len, key;
 
@@ -16,12 +24,15 @@ const Param = (a) => {
           if (rbracket.test(prefix)) {
             add(prefix, obj[i]);
           } else {
-            buildParams(prefix + '[' + (typeof obj[i] === 'object' ? i : '') + ']', obj[i]);
+            buildParams(
+              prefix + "[" + (typeof obj[i] === "object" ? i : "") + "]",
+              obj[i]
+            );
           }
         }
-      } else if (obj && String(obj) === '[object Object]') {
+      } else if (obj && String(obj) === "[object Object]") {
         for (key in obj) {
-          buildParams(prefix + '[' + key + ']', obj[key]);
+          buildParams(prefix + "[" + key + "]", obj[key]);
         }
       } else {
         add(prefix, obj);
@@ -38,7 +49,7 @@ const Param = (a) => {
     return s;
   };
 
-  return buildParams('', a).join('&').replace(/%20/g, '+');
-}
+  return buildParams("", a).join("&").replace(/%20/g, "+");
+};
 
-export default Param
+export default Param;
