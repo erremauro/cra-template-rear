@@ -1,16 +1,16 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import { ConnectedRouter } from 'connected-react-router';
-import { Switch, Route } from 'react-router-dom';
+import { HistoryRouter as Router } from "redux-first-history/rr6";
+import { Routes, Route } from 'react-router-dom';
 import Shell from '@/containers/Shell';
 
 const App = ({history, store}) => (
   <Provider store={store}>
-    <ConnectedRouter history={history}>
-      <Switch>
-        <Route path='/' component={Shell} />
-      </Switch>
-    </ConnectedRouter>
+    <Router history={history}>
+      <Routes>
+        <Route path='/*' element={<Shell />} />
+      </Routes>
+    </Router>
   </Provider>
 );
 
